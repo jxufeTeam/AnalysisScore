@@ -55,16 +55,17 @@ public class CollegelistAction extends ActionSupport {
     public String getCollegeline(){
         List<CollegelistEntity> colleges = collegelistService.selectPart(start, end);
         List<Map<String, String>> list = new ArrayList<>();
-        for(CollegelistEntity college : colleges){
+        for(Object college : colleges){
             Map<String, String> map = new HashMap<>();
-            map.put("name", college.getName());
-            map.put("badge", college.getBadge());
-            map.put("type", college.getType());
-            map.put("belong", college.getBelong());
-            map.put("province", college.getProvince());
-            map.put("doctor", college.getDoctor() + "");
-            map.put("master", college.getMaster() + "");
-            map.put("collegesite", college.getCollegesite());
+            Object[] temp = (Object[]) college;
+            map.put("name", temp[0]+"");
+            map.put("badge", temp[1]+"");
+            map.put("type", temp[2]+"");
+            map.put("belong", temp[3]+"");
+            map.put("province", temp[4]+"");
+            map.put("doctor", temp[5]+"");
+            map.put("master", temp[6]+"");
+            map.put("collegesite", temp[7]+"");
             list.add(map);
         }
         JsonConfig jsonConfig = new JsonConfig();
