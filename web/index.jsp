@@ -22,10 +22,11 @@ Hello!
 </body>
 <script>
     $.ajax({
-        url: '/collegelist/getCollegeline?start=1&end=25',
+        url: '/collegelist/getCollegeline?start=1&end=5',
         type: 'POST',
         success: function (data) {
             var value = JSON.parse(data);
+            console.log(value);
             $.each(value, function (index) {
                 var wrapDiv = $('<div class="college-info-list"></div>');
                 var nodeDiv1 = $('<div class="college-info-list-left"><a href=""><img src="' + value[index].badge + '" /></a><strong><a href="">' + value[index].name + '</a></strong></div>');
