@@ -48,6 +48,9 @@
     <bean id="collegelistDao" class="cn.jxufe.dao.CollegelistDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="provincelistDao" class="cn.jxufe.dao.ProvincelistDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
     <bean id="admininfoDao" class="cn.jxufe.dao.AdmininfoDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -56,9 +59,16 @@
     <bean id="collegelistService" class="cn.jxufe.service.CollegelistServiceImpl">
         <property name="collegelistDao" ref="collegelistDao" />
     </bean>
+    <bean id="provincelistService" class="cn.jxufe.service.ProvincelistServiceImpl">
+        <property name="provincelistDao" ref="provincelistDao" />
+    </bean>
 
     <!-- struts2加入Action -->
     <bean id="collegelistAction" class="cn.jxufe.action.CollegelistAction">
         <property name="collegelistService" ref="collegelistService" />
+    </bean>
+
+    <bean id="provincelistAction" class="cn.jxufe.action.ProvincelistAction">
+        <property name="provincelistService" ref="provincelistService" />
     </bean>
 </beans>

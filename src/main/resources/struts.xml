@@ -13,9 +13,22 @@
     <!-- 所有的action都应该放在对应的package下 -->
     <!-- action的class属性不再是具体的类，而是spring配置文件配置的bean id -->
     <package name="collegelist" namespace="/collegelist" extends="json-default">
-        <action name="getCollegeline" class="collegelistAction" method="getCollegeline">
+        <action name="getCollege" class="collegelistAction" method="getCollege">
             <result name="success" type="json">
                 <param name="root">collegelist</param>
+            </result>
+        </action>
+        <action name="getNum" class="collegelistAction" method="getNum">
+            <result name="success" type="json">
+                <param name="root">count</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="provincelist" namespace="/provincelist" extends="json-default">
+        <action name="getProvince" class="provincelistAction" method="getProvince">
+            <result name="success" type="json">
+                <param name="root">provincelist</param>
             </result>
         </action>
     </package>

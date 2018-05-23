@@ -8,6 +8,8 @@ import net.sf.json.JsonConfig;
 import net.sf.json.util.CycleDetectionStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +21,11 @@ public class CollegelistAction extends ActionSupport {
 
     private int end;
 
+    private String province;
+
     private String collegelist;
+
+    private String count;
 
     @Autowired
     private CollegelistServiceImpl collegelistService;
@@ -40,6 +46,14 @@ public class CollegelistAction extends ActionSupport {
         this.end = end;
     }
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
     public String getCollegelist() {
         return collegelist;
     }
@@ -48,12 +62,27 @@ public class CollegelistAction extends ActionSupport {
         this.collegelist = collegelist;
     }
 
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
     public void setCollegelistService(CollegelistServiceImpl collegelistService) {
         this.collegelistService = collegelistService;
     }
 
-    public String getCollegeline(){
-        List<CollegelistEntity> colleges = collegelistService.selectPart(start, end);
+    public String getCollege(){
+        List<CollegelistEntity> colleges;
+        System.out.println("start: " + start + ",end: " + end + ",province: " + province);
+        if(province.equals("全部")){
+            colleges = collegelistService.selectPart(start, end);
+        }else{
+            colleges = collegelistService.selectPart(start, end, province);
+        }
+
         List<Map<String, String>> list = new ArrayList<>();
         for(Object college : colleges){
             Map<String, String> map = new HashMap<>();
@@ -62,9 +91,9 @@ public class CollegelistAction extends ActionSupport {
             map.put("badge", temp[1]+"");
             map.put("type", temp[2]+"");
             map.put("belong", temp[3]+"");
-            map.put("province", temp[4]+"");
+            map.put("master", temp[4]+"");
             map.put("doctor", temp[5]+"");
-            map.put("master", temp[6]+"");
+            map.put("province", temp[6]+"");
             map.put("collegesite", temp[7]+"");
             list.add(map);
         }
@@ -72,6 +101,16 @@ public class CollegelistAction extends ActionSupport {
         jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
         JSONArray jsonArray = JSONArray.fromObject(list, jsonConfig);
         collegelist = jsonArray.toString();
+        return SUCCESS;
+    }
+
+    public String getNum(){
+        System.out.println("start: " + start + ",end: " + end + ",province: " + province);
+        if(province.equals("全部")){
+            count = collegelistService.selectCount();
+        }else{
+            count = collegelistService.selectCount(province);
+        }
         return SUCCESS;
     }
 }

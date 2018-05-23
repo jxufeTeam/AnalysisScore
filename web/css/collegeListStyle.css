@@ -1,3 +1,36 @@
+.college-info-header{
+    width: 100%;
+    height: 75px;
+    background-color: #1E9FFF;
+    position: relative;
+}
+
+.college-info-list-sreach{
+    border: 1px solid #DDDDDD;
+    padding: 15px;
+}
+
+.college-info-list-sreach a{
+    margin: 3px 0;
+    padding: 0 8px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.college-info-list-sreach a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.select{
+    color: #ffffff;
+    background: #198CCF;
+}
+
+.select:hover{
+    color: #ffffff !important;
+}
+
 .college-info-list{
     width: 580px;
     height: 110px;

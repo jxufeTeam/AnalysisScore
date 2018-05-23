@@ -26,7 +26,7 @@ public class ProvincelistDaoImpl implements EntityDao<ProvincelistEntity> {
         Transaction transaction = session.beginTransaction();
         List<ProvincelistEntity> list = null;
         try{
-            list = session.createQuery("from ProvincelistEntity provincelist order by provincelist.id asc ").list();
+            list = session.createQuery("select provincelist.name from ProvincelistEntity provincelist order by provincelist.id asc ").list();
             transaction.commit();
         }catch (Exception ex){
             transaction.rollback();
