@@ -1,23 +1,41 @@
 .college-info-header{
     width: 100%;
-    height: 75px;
+    height: 175px;
     background-color: #1E9FFF;
     position: relative;
 }
 
+.college-info-list-sreach-wrap{
+    margin-top: 20px;
+}
+
 .college-info-list-sreach{
+
+}
+
+.college-info-list-sreach-left{
+    float: left;
+    background:#1E9FFF;
+    text-align: center;
+}
+
+.college-info-list-sreach-right{
+
+}
+
+.college-info-list-condition{
     border: 1px solid #DDDDDD;
     padding: 15px;
 }
 
-.college-info-list-sreach a{
+.college-info-list-condition a{
     margin: 3px 0;
     padding: 0 8px;
     white-space: nowrap;
     display: inline-block;
 }
 
-.college-info-list-sreach a:hover{
+.college-info-list-condition a:hover{
     cursor: pointer;
     text-decoration: underline;
 }

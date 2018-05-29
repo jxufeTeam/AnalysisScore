@@ -15,13 +15,20 @@
     <script src="lib/layui/layui.js"></script>
 </head>
 <body>
-Hello!
 <div class="college-info-header">
 
 </div>
 <div class="layui-container">
-    <div class="college-info-list-sreach">
-        <strong>高校所在地：</strong>
+    <div class="college-info-list-sreach-wrap">
+        <div class="college-info-list-sreach">
+            <div class="college-info-list-sreach-left">
+                高校搜索
+            </div>
+            <div class="college-info-list-sreach-right"></div>
+        </div>
+        <div class="college-info-list-condition">
+            <strong>高校所在地：</strong>
+        </div>
     </div>
     <div class="college-info-list-wrap"></div>
     <div id="college-info-list-laypage"></div>
@@ -53,10 +60,10 @@ Hello!
             wrapDiv.append(nodeDiv1);
             wrapDiv.append(nodeDiv2);
             $('.college-info-list-wrap').append(wrapDiv);
-            if (index == 0) {
-                $('.college-info-list-left').css('border-top', '1px solid #E1E1E1');
-                $('.college-info-list-center').css('border-top', '1px solid #E1E1E1');
-            }
+            // if (index == 0) {
+            //     $('.college-info-list-left').css('border-top', '1px solid #E1E1E1');
+            //     $('.college-info-list-center').css('border-top', '1px solid #E1E1E1');
+            // }
         });
     }
 
