@@ -72,6 +72,24 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         }
     }
 
+    public String selectCount(String condition, String province){
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        String count = null;
+        try{
+            Query query = session.createQuery("select count(*) from CollegelistEntity collegelist where collegelist.name like ?");
+            query.setParameter(0,"%" + condition + "%");
+            count = query.uniqueResult() + "";
+            System.out.println("count: " + count);
+            transaction.commit();
+        }catch (Exception ex){
+            transaction.rollback();
+        }finally {
+            session.close();
+            return count;
+        }
+    }
+
     @Override
     public CollegelistEntity selectOnce(CollegelistEntity entity) {
         Session session = sessionFactory.openSession();
@@ -116,6 +134,25 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         try{
             Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite from CollegelistEntity collegelist where collegelist.province=? order by collegelist.id asc ");
             query.setParameter(0,province);
+            query.setFirstResult((start - 1) * count);
+            query.setMaxResults(count);
+            list = query.list();
+            transaction.commit();
+        }catch (Exception ex){
+            transaction.rollback();
+        }finally {
+            session.close();
+            return list;
+        }
+    }
+
+    public List<CollegelistEntity> selectPart(int start, int count, String condition, String province){
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<CollegelistEntity> list = null;
+        try{
+            Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite from CollegelistEntity collegelist where collegelist.name like ? order by collegelist.id asc ");
+            query.setParameter(0,"%" + condition + "%");
             query.setFirstResult((start - 1) * count);
             query.setMaxResults(count);
             list = query.list();

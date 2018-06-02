@@ -6,21 +6,34 @@
 }
 
 .college-info-list-sreach-wrap{
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .college-info-list-sreach{
-
+    height: 35px;
 }
 
 .college-info-list-sreach-left{
     float: left;
-    background:#1E9FFF;
-    text-align: center;
+    height: 35px;
+    padding: 0 18px;
+    line-height: 35px;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background: #2684C7;
 }
 
 .college-info-list-sreach-right{
+    float: right;
+}
 
+.college-info-list-sreach-right *{
+    height: 28px;
+    float: left;
+    width: auto;
+    line-height: 28px;
 }
 
 .college-info-list-condition{
@@ -47,6 +60,10 @@
 
 .select:hover{
     color: #ffffff !important;
+}
+
+.college-info-list-wrap{
+    margin-top: 40px;
 }
 
 .college-info-list{
@@ -92,4 +109,38 @@
     height: 20px;
     padding: 5px;
     float: left;
+}
+
+.college-info-list-notfound{
+    width: 580px;
+    border: 1px solid #E1E1E1;
+    padding: 20px 30px 75px;
+}
+
+.college-info-list-notfound *{
+    display: block;
+}
+
+.college-info-list-notfound h3{
+    color: #888888;
+    font-size: 18px;
+    font-weight: normal;
+    border-bottom: 1px solid #E1E1E1;
+    height: 35px;
+    line-height: 30px;
+}
+
+.college-info-list-notfound p{
+    color: #666666;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 25px;
+}
+
+.college-info-list-notfound p span {
+    display: block;
+    width: 100%;
+    color: #102E36;
+    height: 26px;
+    line-height: 26px;
 }

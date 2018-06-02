@@ -21,6 +21,8 @@ public class CollegelistAction extends ActionSupport {
 
     private int end;
 
+    private String condition;
+
     private String province;
 
     private String collegelist;
@@ -44,6 +46,14 @@ public class CollegelistAction extends ActionSupport {
 
     public void setEnd(int end) {
         this.end = end;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     public String getProvince() {
@@ -76,11 +86,15 @@ public class CollegelistAction extends ActionSupport {
 
     public String getCollege(){
         List<CollegelistEntity> colleges;
-        System.out.println("start: " + start + ",end: " + end + ",province: " + province);
-        if(province.equals("全部")){
-            colleges = collegelistService.selectPart(start, end);
+//        System.out.println("start: " + start + ",end: " + end + ",province: " + province);
+        if(condition != ""){
+            colleges = collegelistService.selectPart(start, end, condition, province);
         }else{
-            colleges = collegelistService.selectPart(start, end, province);
+            if(province.equals("全部")){
+                colleges = collegelistService.selectPart(start, end);
+            }else{
+                colleges = collegelistService.selectPart(start, end, province);
+            }
         }
 
         List<Map<String, String>> list = new ArrayList<>();
@@ -106,10 +120,14 @@ public class CollegelistAction extends ActionSupport {
 
     public String getNum(){
         System.out.println("start: " + start + ",end: " + end + ",province: " + province);
-        if(province.equals("全部")){
-            count = collegelistService.selectCount();
+        if(condition != ""){
+            count = collegelistService.selectCount(condition, province);
         }else{
-            count = collegelistService.selectCount(province);
+            if(province.equals("全部")){
+                count = collegelistService.selectCount();
+            }else{
+                count = collegelistService.selectCount(province);
+            }
         }
         return SUCCESS;
     }

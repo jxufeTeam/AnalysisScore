@@ -27,6 +27,10 @@ public class CollegelistServiceImpl implements EntityService<CollegelistEntity> 
         return collegelistDao.selectCount(province);
     }
 
+    public String selectCount(String condition, String province){
+        return collegelistDao.selectCount(condition, province);
+    }
+
     @Override
     public CollegelistEntity selectOnce(CollegelistEntity entity) {
         return collegelistDao.selectOnce(entity);
@@ -39,6 +43,10 @@ public class CollegelistServiceImpl implements EntityService<CollegelistEntity> 
 
     public List<CollegelistEntity> selectPart(int start, int count, String province) {
         return collegelistDao.selectPart(start, count, province);
+    }
+
+    public List<CollegelistEntity> selectPart(int start, int count, String condition, String province) {
+        return collegelistDao.selectPart(start, count,condition, province);
     }
 
     @Override
