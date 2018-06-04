@@ -165,6 +165,25 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         }
     }
 
+    public List<CollegelistEntity> selectPart(int start, int count, double score, String province){
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        List<CollegelistEntity> list = null;
+        try{
+            Query query = session.createQuery("select collegelist.name,collegelist.collegeline from CollegelistEntity collegelist where collegelist.province=? order by collegelist.id asc ");
+            query.setParameter(0,province);
+            query.setFirstResult((start - 1) * count);
+            query.setMaxResults(count);
+            list = query.list();
+            transaction.commit();
+        }catch (Exception ex){
+            transaction.rollback();
+        }finally {
+            session.close();
+            return list;
+        }
+    }
+
     public boolean delete(CollegelistEntity entity) {
         boolean status = false;
         Session session = sessionFactory.openSession();

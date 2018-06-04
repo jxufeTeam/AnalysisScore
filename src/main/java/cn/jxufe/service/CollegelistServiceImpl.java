@@ -49,6 +49,10 @@ public class CollegelistServiceImpl implements EntityService<CollegelistEntity> 
         return collegelistDao.selectPart(start, count,condition, province);
     }
 
+    public List<CollegelistEntity> selectPart(int start, int count, double score, String province) {
+        return collegelistDao.selectPart(start, count,score, province);
+    }
+
     @Override
     public boolean delete(CollegelistEntity entity) {
         return collegelistDao.delete(entity);

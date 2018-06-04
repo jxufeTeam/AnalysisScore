@@ -24,22 +24,24 @@
         </property>
         <property name="mappingLocations">
             <list>
-                <value>classpath:CeEinfoEntity.hbm.xml</value>
                 <value>classpath:AdmininfoEntity.hbm.xml</value>
                 <value>classpath:AdvlistEntity.hbm.xml</value>
                 <value>classpath:ProvincelistEntity.hbm.xml</value>
                 <value>classpath:SimulationEntity.hbm.xml</value>
                 <value>classpath:CollegelistEntity.hbm.xml</value>
+                <value>classpath:CeEinfoEntity.hbm.xml</value>
+                <value>classpath:CategoriesEntity.hbm.xml</value>
             </list>
         </property>
         <property name="annotatedClasses">
             <list>
-                <value>cn.jxufe.entities.CeEinfoEntity</value>
                 <value>cn.jxufe.entities.AdmininfoEntity</value>
                 <value>cn.jxufe.entities.AdvlistEntity</value>
                 <value>cn.jxufe.entities.CollegelistEntity</value>
                 <value>cn.jxufe.entities.ProvincelistEntity</value>
                 <value>cn.jxufe.entities.SimulationEntity</value>
+                <value>cn.jxufe.entities.CeEinfoEntity</value>
+                <value>cn.jxufe.entities.CategoriesEntity</value>
             </list>
         </property>
     </bean>

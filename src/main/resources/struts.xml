@@ -23,6 +23,11 @@
                 <param name="root">count</param>
             </result>
         </action>
+        <action name="forecast" class="collegelistAction" method="getForecastResult">
+            <result name="success" type="json">
+                <param name="root">collegelist</param>
+            </result>
+        </action>
     </package>
 
     <package name="provincelist" namespace="/provincelist" extends="json-default">

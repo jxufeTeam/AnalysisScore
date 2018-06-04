@@ -2,6 +2,7 @@ package cn.jxufe.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CEEinfo", schema = "CEE_Helper", catalog = "")
@@ -10,6 +11,7 @@ public class CeEinfoEntity {
     private String title;
     private String author;
     private String content;
+    private String category;
     private int state;
     private Timestamp createtime;
     private Timestamp updatetime;
@@ -55,6 +57,16 @@ public class CeEinfoEntity {
     }
 
     @Basic
+    @Column(name = "category", nullable = true, length = 255)
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    @Basic
     @Column(name = "state", nullable = false)
     public int getState() {
         return state;
@@ -88,29 +100,20 @@ public class CeEinfoEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         CeEinfoEntity that = (CeEinfoEntity) o;
-
-        if (id != that.id) return false;
-        if (state != that.state) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (author != null ? !author.equals(that.author) : that.author != null) return false;
-        if (content != null ? !content.equals(that.content) : that.content != null) return false;
-        if (createtime != null ? !createtime.equals(that.createtime) : that.createtime != null) return false;
-        if (updatetime != null ? !updatetime.equals(that.updatetime) : that.updatetime != null) return false;
-
-        return true;
+        return id == that.id &&
+                state == that.state &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(author, that.author) &&
+                Objects.equals(content, that.content) &&
+                Objects.equals(category, that.category) &&
+                Objects.equals(createtime, that.createtime) &&
+                Objects.equals(updatetime, that.updatetime);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (author != null ? author.hashCode() : 0);
-        result = 31 * result + (content != null ? content.hashCode() : 0);
-        result = 31 * result + state;
-        result = 31 * result + (createtime != null ? createtime.hashCode() : 0);
-        result = 31 * result + (updatetime != null ? updatetime.hashCode() : 0);
-        return result;
+
+        return Objects.hash(id, title, author, content, category, state, createtime, updatetime);
     }
 }

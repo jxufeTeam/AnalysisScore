@@ -1,8 +1,6 @@
-.college-info-header{
-    width: 100%;
-    height: 175px;
-    background-color: #1E9FFF;
-    position: relative;
+*{
+    margin: 0px;
+    padding: 0px;
 }
 
 .college-info-list-sreach-wrap{
@@ -21,8 +19,11 @@
     font-family: "微软雅黑";
     font-size: 16px;
     text-decoration: none;
-    color: #fff;
-    background: #2684C7;
+    color: #000;
+    border: 1px solid #E1E1E1;
+    border-bottom: none;
+    cursor: pointer;
+    /*background: #2684C7;*/
 }
 
 .college-info-list-sreach-right{
@@ -55,7 +56,7 @@
 
 .select{
     color: #ffffff;
-    background: #198CCF;
+    background: #1E9FFF;
 }
 
 .select:hover{

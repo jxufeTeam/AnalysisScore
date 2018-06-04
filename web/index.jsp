@@ -1,148 +1,215 @@
 <%--
   Created by IntelliJ IDEA.
   User: 84975
-  Date: 2018/3/12
-  Time: 22:50
+  Date: 2018/3/15
+  Time: 20:34
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Title</title>
+    <link href="css/mainPageStyle.css" rel="stylesheet">
+    <link href="css/mainHeaderStyle.css" rel="stylesheet">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <link href="lib/layui/css/layui.css" rel="stylesheet">
-    <link href="css/collegeListStyle.css?version=2018.5.31" rel="stylesheet">
     <script src="lib/layui/layui.js"></script>
 </head>
 <body>
-<div class="college-info-header">
-
+<div class="main-header">
+    <div class="layui-container" style="padding-top: 56px">
+        <div class="main-logo-wrap">
+            <img src="img/logo_new.png">
+        </div>
+        <div class="main-menu-wrap">
+            <ul class="main-menu">
+                <li><a>高考首页</a></li>
+                <li><a>高考资讯</a></li>
+                <li><a href="collegeList.jsp">院校列表</a></li>
+                <li><a>高考试题</a></li>
+                <li><a>高考报考</a></li>
+                <li><a href="forecast.jsp">分数线</a></li>
+            </ul>
+        </div>
+        <%--<div class="main-code-wrap">--%>
+        <%--<div class="main-weixin">--%>
+        <%--<div></div>--%>
+        <%--<span>微信</span>--%>
+        <%--</div>--%>
+        <%--<div class="main-code"></div>--%>
+        <%--</div>--%>
+    </div>
 </div>
-<div class="layui-container">
-    <div class="college-info-list-sreach-wrap">
-        <div class="college-info-list-sreach">
-            <div class="college-info-list-sreach-left">
-                高校搜索
-            </div>
-            <div class="college-info-list-sreach-right">
-                <input type="text" placeholder="请输入标题" autocomplete="off" class="layui-input">
-                <input type="button" class="layui-btn layui-btn-normal" value="搜索">
+<div class="layui-container layui-row" style="margin-top: 40px;">
+    <div class="main-content-center layui-col-md8">
+        <div class="layui-carousel" id="main-broadcast">
+            <div carousel-item>
+                <div>条目1</div>
+                <div>条目2</div>
+                <div>条目3</div>
+                <div>条目4</div>
+                <div>条目5</div>
             </div>
         </div>
-        <div class="college-info-list-condition">
-            <strong>高校所在地：</strong>
+        <div class="main-overview-wrap">
+            <div class="main-overview">
+                <div class="main-overview-header">
+                    <h2>高校资讯</h2>
+                    <a>更多<i class="layui-icon layui-icon-right"></i></a>
+                </div>
+                <ul class="main-overview-content">
+                    <li>
+                        <a>湖北：异地高考考生6年增34倍</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南高考录取：集中录取7个批次持续34天</a>
+                        <span>2018-06-01</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="main-overview">
+                <div class="main-overview-header">
+                    <h2>高校资讯</h2>
+                    <a>更多<i class="layui-icon layui-icon-right"></i></a>
+                </div>
+                <ul class="main-overview-content">
+                    <li>
+                        <a>湖北：异地高考考生6年增34倍</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南高考录取：集中录取7个批次持续34天</a>
+                        <span>2018-06-01</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="main-overview">
+                <div class="main-overview-header">
+                    <h2>高校资讯</h2>
+                    <a>更多<i class="layui-icon layui-icon-right"></i></a>
+                </div>
+                <ul class="main-overview-content">
+                    <li>
+                        <a>湖北：异地高考考生6年增34倍</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南高考录取：集中录取7个批次持续34天</a>
+                        <span>2018-06-01</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="main-overview">
+                <div class="main-overview-header">
+                    <h2>高校资讯</h2>
+                    <a>更多<i class="layui-icon layui-icon-right"></i></a>
+                </div>
+                <ul class="main-overview-content">
+                    <li>
+                        <a>湖北：异地高考考生6年增34倍</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
+                        <span>2018-06-01</span>
+                    </li>
+                    <li>
+                        <a>河南高考录取：集中录取7个批次持续34天</a>
+                        <span>2018-06-01</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="college-info-list-wrap"></div>
-    <div id="college-info-list-laypage"></div>
+    <div class="main-content-right layui-col-md4">
+        <div class="count-down">
+            <span>距离2018年全国高考还有</span>
+            <span>04</span>
+            <span>天</span>
+        </div>
+        <script>
+            $('.count-down span').eq(1).html((6 - (new Date().getDate())) < 10 ? ('0' + (6 - (new Date().getDate()))) : 6 - (new Date().getDate()));
+        </script>
+        <div class="layui-inline" id="main-date" style="left: 12.5%; margin-bottom: 20px"></div>
+        <div class="main-simulation">
+            <div class="main-simulation-header">精品试题推荐</div>
+            <ul class="main-simulation-content">
+                <li><span class="layui-badge layui-bg-blue">1</span><a>海南省海口市高二英语期末调研测试题</a></li>
+                <li><span class="layui-badge layui-bg-blue">2</span><a>甘肃省白银阳光高级中学高二英语期末考试</a></li>
+                <li><span class="layui-badge layui-bg-blue">3</span><a>重庆市万州区高二物理期末质量监测</a></li>
+                <li><span class="layui-badge layui-bg-blue">4</span><a>云南省昆明市第十二中学高二物理期末考试</a></li>
+                <li><span class="layui-badge layui-bg-blue">5</span><a>河北省承德市联校高二物理期末考试</a></li>
+                <li><span class="layui-badge layui-bg-blue">6</span><a>天津市耀华中学高二（上）化学期末试卷</a></li>
+                <li><span class="layui-badge layui-bg-blue">7</span><a>四川省广安市高二上化学期末试卷</a></li>
+                <li><span class="layui-badge layui-bg-blue">8</span><a>河北省承德市联校高二上地理期末考试</a></li>
+                <li><span class="layui-badge layui-bg-blue">9</span><a>湖南省汉寿县普通高中地理期末测试题</a></li>
+                <li><span class="layui-badge layui-bg-blue">10</span><a>广东省揭阳市产业园区高二历史期末考试</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
-</body>
 <script>
-
-    function refreshProvince(data){
-        var value = JSON.parse(data);
-        console.log(value);
-        var dom = $('.college-info-list-condition');
-        dom.append('<a class="select">全部</a>');
-        $.each(value, function(index){
-           var a = '<a>' + value[index] + '</a>';
-           dom.append(a);
+    layui.use(['carousel','laydate'], function(){
+        var carousel = layui.carousel;
+        var laydate = layui.laydate;
+        //建造实例
+        carousel.render({
+            elem: '#main-broadcast'
+            ,width: '100%' //设置容器宽度
         });
-
-    }
-
-    function refreshCollegelist(data) {
-        var value = JSON.parse(data);
-        console.log(value);
-        if(value.length > 0){
-            $.each(value, function (index) {
-                var wrapDiv = $('<div class="college-info-list"></div>');
-                var nodeDiv1 = $('<div class="college-info-list-left"><a href=""><img src="' + value[index].badge + '" /></a><strong><a href="">' + value[index].name + '</a></strong></div>');
-                var nodeDiv2 = $('<div class="college-info-list-center"></div>');
-                var nodeUl = $('<ul><li>高校所在地：' + value[index].province + '</li><li>院校特色：' + value[index].type + '</li><li>博士点：' + value[index].doctor + '个</li><li>高校隶属：' + value[index].belong + '</li><li>硕士点：' + value[index].master + '个</li><li>学校网址：<a target="_blank" href="' + value[index].collegesite + '">' + value[index].collegesite + '</a></li></ul>');
-                nodeDiv2.append(nodeUl);
-                wrapDiv.append(nodeDiv1);
-                wrapDiv.append(nodeDiv2);
-                $('.college-info-list-wrap').append(wrapDiv);
-                if (index == 0) {
-                    $('.college-info-list').css('border-top', '1px solid #E1E1E1');
-                }
-            });
-        }else{
-            var div = $('<div class="college-info-list-notfound"><h3>抱歉，没有找到相关内容</h3><p><span>您可以：</span><span>1.修改搜索“关键词”，再试一次。</span><span>2.减少部分搜索条件，便于搜索到更多内容。</span></p></div>');
-            $('.college-info-list-wrap').append(div);
-        }
-
-    }
-
-    function feshLayuipage(condition, province) {
-        layui.use('laypage', function () {
-            var laypage = layui.laypage;
-            // var province = encodeURIComponent($('.select').text());
-            var count;
-            function freshCount(data) {
-                request({}, 'POST', '/collegelist/getNum?condition='+ condition + '&province=' + province, refreshCount)
+        laydate.render({
+            elem: '#main-date'
+            ,position: 'static'
+            ,mark: {
+                '2018-6-6': '高考'
             }
-            function refreshCount(data) {
-                count =  data;
-            }
-            freshCount();
-            //执行一个laypage实例
-            laypage.render({
-                elem: 'college-info-list-laypage' //注意，这里的 test1 是 ID，不用加 # 号
-                , count:  count//数据总数，从服务端得到
-                , first: '首页'
-                , last: '尾页'
-                , prev: '<em class="layui-icon">&#xe65a;</em>'
-                , next: '<em class="layui-icon">&#xe65b;</em>'
-                , jump: function (obj) {
-                    freshCollegelist(obj.curr, condition, province);
-                }
-            });
         });
-    }
-
-    function freshProvince(data){
-        request({}, 'POST', '/provincelist/getProvince', refreshProvince);
-    }
-
-    function freshCollegelist(data, condition, province) {
-        $('.college-info-list-wrap').html('');
-        request({}, 'POST', '/collegelist/getCollege?start=' + data + '&end=5&condition=' + condition + '&province=' + province, refreshCollegelist);
-    }
-
-    freshProvince();
-
-    feshLayuipage('','全部');
-
-    $('.college-info-list-condition a').on('click', function () {
-        $('.college-info-list-sreach-right input').eq(0).val('');
-        $('.college-info-list-condition a').removeClass('select');
-        $(this).addClass('select');
-        var province = $('.select').text();
-        feshLayuipage('',province);
     });
-
-    $('.college-info-list-sreach-right input').eq(1).on('click',function(){
-        var condition = $('.college-info-list-sreach-right input').eq(0).val();
-        $('.college-info-list-condition a').removeClass('select');
-        $('.college-info-list-condition a').eq(0).addClass('select');
-        feshLayuipage(condition, '全部');
-    });
-
-    function request(object, method, methodURL, successFunction) {
-        $.ajax({
-            url: methodURL,
-            type: method,
-            data: JSON.stringify(object),
-            contentType: "application/json",
-            dataType: "json",
-            async: false,
-            success: successFunction,
-            error: function (data) {
-                console.log('error!');
-            }
-        });
-    }
 </script>
+</body>
 </html>
