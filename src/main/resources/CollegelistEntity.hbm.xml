@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.jxufe.entities.CollegelistEntity" table="collegelist" schema="CEE_Helper">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(255)"/>
+        </property>
+        <property name="badge">
+            <column name="badge" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="belong">
+            <column name="belong" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="province">
+            <column name="province" sql-type="varchar(255)"/>
+        </property>
+        <property name="academician">
+            <column name="academician" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="doctor">
+            <column name="doctor" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="master">
+            <column name="master" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="collegesite">
+            <column name="collegesite" sql-type="varchar(255)"/>
+        </property>
+        <property name="collegebrochure">
+            <column name="collegebrochure" sql-type="text" not-null="true"/>
+        </property>
+        <property name="collegeguide">
+            <column name="collegeguide" sql-type="text" not-null="true"/>
+        </property>
+        <property name="collegeline">
+            <column name="collegeline" sql-type="text"/>
+        </property>
+        <property name="majorlist">
+            <column name="majorlist" sql-type="text"/>
+        </property>
+    </class>
+</hibernate-mapping>

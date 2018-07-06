@@ -1,0 +1,152 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.college-info-list-sreach-wrap{
+    margin-top: 40px;
+}
+
+.college-info-list-sreach{
+    height: 35px;
+}
+
+.college-info-list-sreach-left{
+    float: left;
+    height: 35px;
+    padding: 0 18px;
+    line-height: 35px;
+    font-family: "微软雅黑";
+    font-size: 16px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #E1E1E1;
+    border-bottom: none;
+    cursor: pointer;
+    /*background: #2684C7;*/
+}
+
+.college-info-list-sreach-right{
+    float: right;
+}
+
+.college-info-list-sreach-right *{
+    height: 28px;
+    float: left;
+    width: auto;
+    line-height: 28px;
+}
+
+.college-info-list-condition{
+    border: 1px solid #DDDDDD;
+    padding: 15px;
+}
+
+.college-info-list-condition a{
+    margin: 3px 0;
+    padding: 0 8px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.college-info-list-condition a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.select{
+    color: #ffffff;
+    background: #1E9FFF;
+}
+
+.select:hover{
+    color: #ffffff !important;
+}
+
+.college-info-list-wrap{
+    margin-top: 40px;
+}
+
+.college-info-list{
+    width: 780px;
+    height: 110px;
+    border: 1px solid #E1E1E1;
+    border-top: none;
+}
+
+.college-info-list-left{
+    width: 60px;
+    height: 90px;
+    padding: 10px;
+    float: left;
+    border-right: 1px solid #E1E1E1;
+}
+
+.college-info-list-left img{
+    width: 60px;
+    height: 60px;
+}
+
+.college-info-list-left strong{
+    display: block;
+    text-align: center;
+}
+
+.college-info-list-center{
+    width: 679px;
+    height: 90px;
+    padding: 10px;
+    float: left;
+}
+
+.college-info-list-center ul:not(.layui-rate){
+    width: 679px;
+    height: 90px;
+    list-style: none;
+}
+
+.college-info-list-center ul li:not(.layui-inline){
+    width: 320px;
+    height: 20px;
+    padding: 5px;
+    float: left;
+}
+
+.layui-rate{
+    padding: 0;
+    font-size: 14px;
+}
+
+.college-info-list-notfound{
+    width: 718px;
+    border: 1px solid #E1E1E1;
+    padding: 20px 30px 75px;
+}
+
+.college-info-list-notfound *{
+    display: block;
+}
+
+.college-info-list-notfound h3{
+    color: #888888;
+    font-size: 18px;
+    font-weight: normal;
+    border-bottom: 1px solid #E1E1E1;
+    height: 35px;
+    line-height: 30px;
+}
+
+.college-info-list-notfound p{
+    color: #666666;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 25px;
+}
+
+.college-info-list-notfound p span {
+    display: block;
+    width: 100%;
+    color: #102E36;
+    height: 26px;
+    line-height: 26px;
+}

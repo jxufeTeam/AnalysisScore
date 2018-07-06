@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- data connection -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://118.25.105.231:3306/CEE_Helper"></property>
+        <property name="username" value="Ubuntu"></property>
+        <property name="password" value="123456"></property>
+    </bean>
+
+    <!-- session factory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://118.25.105.231:3306/CEE_Helper</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:AdmininfoEntity.hbm.xml</value>
+                <value>classpath:AdvlistEntity.hbm.xml</value>
+                <value>classpath:ProvincelistEntity.hbm.xml</value>
+                <value>classpath:CollegelistEntity.hbm.xml</value>
+                <value>classpath:CategoriesEntity.hbm.xml</value>
+                <value>classpath:SimulationEntity.hbm.xml</value>
+                <value>classpath:CeEinfoEntity.hbm.xml</value>
+            </list>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>cn.jxufe.entities.AdmininfoEntity</value>
+                <value>cn.jxufe.entities.AdvlistEntity</value>
+                <value>cn.jxufe.entities.CollegelistEntity</value>
+                <value>cn.jxufe.entities.ProvincelistEntity</value>
+                <value>cn.jxufe.entities.SimulationEntity</value>
+                <value>cn.jxufe.entities.CategoriesEntity</value>
+                <value>cn.jxufe.entities.CeEinfoEntity</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- hibernate加入Dao层 -->
+    <bean id="collegelistDao" class="cn.jxufe.dao.CollegelistDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="provincelistDao" class="cn.jxufe.dao.ProvincelistDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="admininfoDao" class="cn.jxufe.dao.AdmininfoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="simulationDao" class="cn.jxufe.dao.SimulationDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="ceeinfoDao" class="cn.jxufe.dao.CeEinfoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- hibernate加入Service层 -->
+    <bean id="collegelistService" class="cn.jxufe.service.CollegelistServiceImpl">
+        <property name="collegelistDao" ref="collegelistDao" />
+    </bean>
+    <bean id="provincelistService" class="cn.jxufe.service.ProvincelistServiceImpl">
+        <property name="provincelistDao" ref="provincelistDao" />
+    </bean>
+    <bean id="simulationService" class="cn.jxufe.service.SimulationServiceImpl">
+        <property name="simulationDao" ref="simulationDao" />
+    </bean>
+    <bean id="ceeinfoService" class="cn.jxufe.service.CeEinfoServiceImpl">
+        <property name="collegelistDao" ref="ceeinfoDao" />
+    </bean>
+
+    <!-- struts2加入Action -->
+    <bean id="collegelistAction" class="cn.jxufe.action.CollegelistAction">
+        <property name="collegelistService" ref="collegelistService" />
+    </bean>
+    <bean id="provincelistAction" class="cn.jxufe.action.ProvincelistAction">
+        <property name="provincelistService" ref="provincelistService" />
+    </bean>
+    <bean id="simulationAction" class="cn.jxufe.action.SimulationAction">
+        <property name="simulationService" ref="simulationService" />
+    </bean>
+    <bean id="ceeinfoAction" class="cn.jxufe.action.CeEinfoAction">
+        <property name="ceEinfoService" ref="ceeinfoService" />
+    </bean>
+</beans>

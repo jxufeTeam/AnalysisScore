@@ -1,0 +1,130 @@
+.header{
+    border: 1px solid #ADD0EC;
+    padding: 10px 15px 10px 20px;
+    line-height: 18px;
+    background: #EFF9FE;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.header span{
+    color: rgb(44, 107, 178);
+    font-size: 18px;
+    display: inline-block;
+}
+
+.nav{
+    overflow: hidden;
+    zoom: 1;
+}
+
+.nav h3{
+    float: left;
+    height: 30px;
+    margin-right: 6px;
+    line-height: 30px;
+    padding-left: 39px;
+    font-size: 18px;
+    font-weight: normal;
+    color: rgb(255, 255, 255);
+    background: url("../img/area_lt.gif") no-repeat;
+}
+
+.nav h3 span{
+    display: block;
+    padding-right: 11px;
+    background: url("../img/area_rt.jpg") right no-repeat;
+}
+
+.nav a{
+    display: block;
+    float: left;
+    height: 25px;
+    margin: 6px 8px 0 0;
+    padding-left: 16px;
+    color: #2c6bb3;
+    text-decoration: none;
+    outline: 0;
+    background: url("../img/blue_btn_l.gif") no-repeat;
+    font-family: Microsoft YaHe;
+    font-size: 12px;
+}
+
+.nav a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #2c6bb3;
+}
+
+.nav a span{
+    display: block;
+    padding-right: 16px;
+    line-height: 24px;
+    background: url("../img/blue_btn_r.gif") right no-repeat;
+}
+
+.select{
+    background: #0073be !important;
+    border-radius: 2px !important;
+    color: #fff !important;
+}
+
+.select span{
+    background: #0073be !important;
+    border-radius: 2px !important;
+}
+
+.article{
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.titDt{
+    background-color: #f6fbfd;
+    border-bottom: 1px solid #d0eaf7;
+    height: 34px;
+    line-height: 34px;
+    color: #2c6bb3;
+    font-size: 100%;
+}
+
+.titDt em{
+    background: url("../img/iconB.gif") no-repeat 0 50%;
+    padding-left: 15px;
+}
+
+.ceeinfo-list{
+    padding: 10px 15px;
+    list-style: none;
+}
+
+.ceeinfo-list li{
+    padding: 2px 0;
+    line-height: 24px;
+    list-style: none;
+}
+
+.ceeinfo-list li span{
+    font-size: 12px;
+    float: right;
+    color: #aaa;
+}
+
+.ceeinfo-list li a{
+    color: #003399;
+    font-size: 14px;
+    text-decoration: none;
+    outline: 0;
+}
+
+.ceeinfo-list li a:hover{
+    cursor: pointer;
+    color:#FA0019;
+    text-decoration: underline;
+}
+
+.listLi{
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+}

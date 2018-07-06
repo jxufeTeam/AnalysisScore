@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+    <!-- struts的action配置文件 -->
+    <!-- 将action托管给spring -->
+    <constant name="struts.objectFactory" value="spring" />
+
+    <!-- 所有的action都应该放在对应的package下 -->
+    <!-- action的class属性不再是具体的类，而是spring配置文件配置的bean id -->
+    <package name="collegelist" namespace="/collegelist" extends="json-default">
+        <action name="getCollege" class="collegelistAction" method="getCollege">
+            <result name="success" type="json">
+                <param name="root">collegelist</param>
+            </result>
+        </action>
+        <action name="getNum" class="collegelistAction" method="getNum">
+            <result name="success" type="json">
+                <param name="root">count</param>
+            </result>
+        </action>
+        <action name="forecast" class="collegelistAction" method="getForecastResult">
+            <result name="success" type="json">
+                <param name="root">collegelist</param>
+            </result>
+        </action>
+        <action name="getDetail" class="collegelistAction" method="getCollegeDetail">
+            <result name="success" type="json">
+                <param name="root">collegelist</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="provincelist" namespace="/provincelist" extends="json-default">
+        <action name="getProvince" class="provincelistAction" method="getAllProvince">
+            <result name="success" type="json">
+                <param name="root">provincelist</param>
+            </result>
+        </action>
+        <action name="getProvinceline" class="provincelistAction" method="getOnceProvinceLine">
+            <result name="success" type="json">
+                <param name="root">provincelist</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="simulation" namespace="/simulation" extends="json-default">
+        <action name="getMainList" class="simulationAction" method="getMainList">
+            <result name="success" type="json">
+                <param name="root">simulationList</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="ceeinfo" namespace="/ceeinfo" extends="json-default">
+        <action name="getMainList" class="ceeinfoAction" method="getMainList">
+            <result name="success" type="json">
+                <param name="root">ceeinfoList</param>
+            </result>
+        </action>
+        <action name="getOnce" class="ceeinfoAction" method="getOnce">
+            <result name="success" type="json">
+                <param name="root">ceeinfoMap</param>
+            </result>
+        </action>
+        <action name="getList" class="ceeinfoAction" method="getListByProvince">
+            <result name="success" type="json">
+                <param name="root">ceeinfoList</param>
+            </result>
+        </action>
+    </package>
+</struts>

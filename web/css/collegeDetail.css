@@ -1,0 +1,461 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    width: 100%;
+    margin: auto;
+    min-width: 980px;
+    font-family: Microsoft YaHei, "Droid Sans", "Droid Sans Fallback", "Heiti SC", Helvetica, sans-self !important;
+    color: #55595f !important;
+    font-size: 12px !important;
+    line-height: 24px !important;
+    text-align: left !important;
+}
+
+body a{
+    text-decoration: none;
+    color: #000000;
+}
+
+#sec_head{
+    width: 100%;
+    height: 100px;
+    background: rgb(9, 159, 245);
+}
+
+.sec_head_con{
+    width: 1000px;
+    margin: auto;
+    padding-top: 15px;
+    background: rgb(9, 159, 245);
+}
+
+.logo {
+    margin-left: 8px;
+    display: block;
+    float: left;
+    padding-top: 20px;
+    _display: inline;
+}
+
+.newsite{
+    width: 88px;
+    height: 23px;
+    line-height: 23px;
+    float: left;
+    _display: inline;
+    position: relative;
+    margin: 42px 0 0 15px;
+    z-index: 100;
+}
+
+.newsite dl {
+    width: 88px;
+    height: 41px;
+    font-size: 12px;
+    position: absolute;
+    z-index: 100;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.newsite dl:hover{
+    overflow: visible;
+}
+
+.newsite a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.newsite p{
+    border-bottom:1px dashed #e4e4e4;
+}
+
+.newsite em{
+    color: #6ECCF7;
+    font-style: normal;
+    border-right: 1px solid #e4e4e4;
+}
+
+.newsite dl dt {
+    padding-left: 19px;
+    width: 54px;
+    height: 41px;
+    line-height: 41px;
+    border-left: 1px solid #6ECCF7;
+    float: left;
+    color: #FFF;
+    position: relative;
+    font-size: 16px;
+}
+
+.newsite dl dd {
+    margin-top: 41px;
+    width: 274px;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    padding: 10px 12px;
+    color: #e4e4e4;
+    word-spacing: 1px;
+}
+
+.nav{
+    float: left;
+    height: 36px;
+    color: #fff;
+    padding-left: 20px;
+    padding-top: 20px;
+    display: block;
+    margin: auto;
+}
+
+.nav a{
+    height: 36px;
+    line-height: 36px;
+    margin-right: 18px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    outline: 0;
+}
+
+.logoArea{
+    width: 1000px;
+    height: 42px;
+    line-height: 42px;
+}
+
+.channel_Nav{
+    margin: 20px auto;
+    width: 1000px;
+    position: relative;
+    height: 37px;
+    border-bottom: 1px solid #198CCF;
+}
+
+.channel_Nav li{
+    float: left;
+    list-style: none;
+    height: 35px;
+    line-height: 35px;
+    background: #fff;
+    border: 1px solid #DDDDDD;
+}
+
+.channel_Nav li:hover{
+    background: #198CCF;
+    cursor: pointer;
+}
+
+.channel_Nav li a:hover{
+    color: #fff;
+}
+
+.channel_Nav li a {
+    color: #333;
+    padding: 0 18px;
+    font-size: 16px;
+    border-right: none;
+}
+
+.right_Search_Box{
+    float: right;
+}
+
+#schname_h{
+    float: left;
+    border: none;
+    width: 230px;
+    height: 28px;
+    padding-left: 35px;
+    line-height: 28px;
+    border: 1px solid #88B3E1;
+    border-right: none;
+}
+
+#sch_btn{
+    float: left;
+    border: none;
+    width: 59px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: 微软雅黑;
+    cursor: pointer;
+    background: rgb(25, 140, 207);
+}
+
+.wrap{
+    width: 1000px;
+    margin: 0 auto;
+    height: 330px;
+}
+
+.menu_Cto{
+
+}
+
+h2{
+    height: 48px;
+    padding-bottom: 5px;
+    line-height: 48px;
+    font-size: 24px;
+    font-weight: normal;
+    color: #005EAC;
+    padding-left: 10px;
+}
+.college_com {
+    display: inline-block;
+    width: 69px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    background: #FE5639;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.college_msg{
+    border: 1px solid #E1E1E1;
+    padding: 10px 15px;
+}
+
+.college_msg dl{
+    overflow: hidden;
+    zoom: 1;
+}
+.college_msg ul{
+    float: left;
+    line-height: 28px;
+    padding-left: 40px;
+    list-style: none;
+}
+
+.c211{
+    padding: 3px 5px 1px;
+    color: #ffffff;
+    background: #198CCF;
+}
+.c985{
+    background: #FE5639;
+    padding: 3px 5px 1px;
+    color: #ffffff;
+}
+
+.sm_nav{
+    background: #FAFAFA;
+    overflow: hidden;
+    float: left;
+    width: 968px;
+    border: 1px solid #E1E1E1;
+    padding: 10px 15px;
+    display: block;
+}
+.sm_nav p{
+    float: left;
+    width: 480px;
+}
+.sm_nav a{
+    color: #005EAC;
+    padding: 2px;
+    position: relative;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+}
+.sm_nav a:hover{
+    text-decoration: underline;
+    color: #FFFFFF;
+    background: #005EAC;
+}
+
+.wrapper{
+    width: 1000px;
+    margin: 0 auto;
+}
+.cont_l {
+    width: 725px;
+    float: left;
+}
+.graybox{
+    line-height: 32px;
+    text-align: center;
+}
+
+.tabschool {
+    position: relative;
+    width: 725px;
+}
+.tabTit5 {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+.tabTit5 li {
+    float: left;
+    width: 52px;
+    line-height: 20px;
+    background: #D8D8D8;
+    border: 1px solid #D8D8D8;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 5px;
+    list-style: none;
+}
+
+.tabTit5 li.on5 {
+    background: #118AD2;
+    border: 1px solid #0072CE;
+    color: #FFF;
+    font-weight: bold;
+}
+.btnFsxBox{
+    background: #ebebeb;
+    border: 1px solid #e0e0e0;
+    line-height: 38px;
+    padding: 0 10px 0 15px;
+    font-size: 14px;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 5px;
+}
+
+table td{
+    line-height: 24px;
+    font-size: 12px;
+    text-align: center;
+    border-color: #E1E1E1;
+}
+
+table tr a:hover{
+    text-decoration: underline;
+}
+
+.cont_l th{
+    padding:0 40px;
+    height: 36px;
+    line-height: 36px;
+    background: #F0F5F8;
+    color: #005EAC;
+    font-size: 14px;
+}
+
+.cont_r{
+    width: 265px;
+    float: right;
+}
+
+.ct_t{
+    border: 1px solid #E1E1E1;
+    padding: 10px 15px;
+}
+
+.ct_t h3{
+    height: 30px;
+    padding-bottom: 5px;
+    line-height: 30px;
+    border-bottom: 1px solid #E1E1E1;
+}
+
+#bg_sz li{
+    background: none;
+    height: 24px;
+    line-height: 21px;
+    padding-left: 23px;
+    list-style: none;
+}
+
+#bg_sz span{
+    float: right;
+    color: #999999;
+    font-size: 12px;
+}
+
+#bg_sz1 li{
+    background: none;
+    height: 24px;
+    line-height: 21px;
+    padding-left: 23px;
+    list-style: none;
+}
+
+#bg_sz1 span{
+    float: right;
+    color: #999999;
+    font-size: 12px;
+}
+
+.msg{
+    overflow: hidden;
+    text-align: center;
+    width: 1000px;
+    margin: 0 auto;
+    background: #F9F9F9;
+    padding: 5px 0;
+    border: 1px solid #E1E1E1;
+}
+
+.footer2013 {
+    width: 100%;
+    overflow: hidden;
+    border-top: 3px solid #7e7e7e;
+    background-color: #e8e8e8;
+    padding: 10px 0;
+    line-height: 28px;
+    color: #000;
+}
+.link{
+    padding: 10px 0;
+    zoom: 1;
+    overflow: hidden;
+    word-spacing: 20px;
+    border-bottom: 1px solid #000000;
+}
+
+.link dt{
+    width: 100px;
+    float: left;
+    font-size: 18px;
+}
+
+.link dd {
+    width: 850px;
+    float: left;
+}
+.tc{
+    text-align: center;
+}
+
+.footer2013 a{
+    color: #55595f;
+    text-decoration: none;
+    outline: 0;
+}
+
+#back-to-top{
+    background: url(http://img.eduuu.com/website/gaokao/images/contList/btn_back.gif) no-repeat 50% 0;
+    width: 30px;
+    height: 91px;
+    position: fixed;
+    bottom: 106px;
+    display: block;
+    line-height: 999px;
+    overflow: hidden;
+    cursor: pointer;
+    right: 5%;
+}
+
+#college_tab tr:hover{
+    background: #D5EAFB;
+}
+
+

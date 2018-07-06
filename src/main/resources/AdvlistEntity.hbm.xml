@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.jxufe.entities.AdvlistEntity" table="advlist" schema="CEE_Helper">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="title">
+            <column name="title" sql-type="varchar(255)"/>
+        </property>
+        <property name="supplier">
+            <column name="supplier" sql-type="varchar(255)"/>
+        </property>
+        <property name="content">
+            <column name="content" sql-type="text"/>
+        </property>
+        <property name="state">
+            <column name="state" sql-type="int(11)"/>
+        </property>
+        <property name="createtime">
+            <column name="createtime" sql-type="datetime"/>
+        </property>
+        <property name="updatetime">
+            <column name="updatetime" sql-type="datetime"/>
+        </property>
+    </class>
+</hibernate-mapping>

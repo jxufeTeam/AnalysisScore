@@ -1,0 +1,52 @@
+
+
+.main-header{
+    width: 100%;
+    height: 150px;
+    background-color: #1E9FFF;
+    position: relative;
+}
+
+.main-logo-wrap,
+.main-menu-wrap,
+.main-code-wrap{
+    display: inline-block;
+}
+
+.main-menu-wrap{
+    margin-left: 100px;
+    vertical-align: bottom;
+}
+
+.main-menu li{
+    float: left;
+}
+
+.main-menu li a{
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+}
+
+.main-code-wrap{
+    float: right;
+}
+
+.main-weixin{
+    color: #fff;
+    padding: 6px 8px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.main-weixin div{
+    padding-top: 3px;
+    background: url("../img/iconAll.png") no-repeat;
+    background-position: -114px 0;
+    width: 39px;
+    height: 36px;
+    margin-bottom: 5px;
+}
