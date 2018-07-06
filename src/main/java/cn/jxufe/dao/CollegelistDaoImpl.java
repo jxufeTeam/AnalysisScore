@@ -96,8 +96,8 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         Transaction transaction = session.beginTransaction();
         CollegelistEntity collegelist = null;
         try{
-            Query query = session.createQuery("from CollegelistEntity collegelist where collegelist.name =? order by collegelist.id asc ");
-            query.setParameter(0, entity.getName());
+            Query query = session.createQuery("from CollegelistEntity collegelist where collegelist.id =? order by collegelist.id asc ");
+            query.setParameter(0, entity.getId());
             collegelist = (CollegelistEntity) query.uniqueResult();
             transaction.commit();
         }catch (Exception ex){
@@ -114,7 +114,7 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         Transaction transaction = session.beginTransaction();
         List<CollegelistEntity> list = null;
         try{
-            Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite from CollegelistEntity collegelist order by collegelist.id asc ");
+            Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite,collegelist.id from CollegelistEntity collegelist order by collegelist.id asc ");
             query.setFirstResult((start - 1) * count);
             query.setMaxResults(count);
             list = query.list();
@@ -132,7 +132,7 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         Transaction transaction = session.beginTransaction();
         List<CollegelistEntity> list = null;
         try{
-            Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite from CollegelistEntity collegelist where collegelist.province=? order by collegelist.id asc ");
+            Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite,collegelist.id from CollegelistEntity collegelist where collegelist.province=? order by collegelist.id asc ");
             query.setParameter(0,province);
             query.setFirstResult((start - 1) * count);
             query.setMaxResults(count);
@@ -151,7 +151,7 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         Transaction transaction = session.beginTransaction();
         List<CollegelistEntity> list = null;
         try{
-            Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite from CollegelistEntity collegelist where collegelist.name like ? order by collegelist.id asc ");
+            Query query = session.createQuery("select collegelist.name,collegelist.badge,collegelist.type,collegelist.belong,collegelist.doctor,collegelist.master,collegelist.province,collegelist.collegesite,collegelist.id from CollegelistEntity collegelist where collegelist.name like ? order by collegelist.id asc ");
             query.setParameter(0,"%" + condition + "%");
             query.setFirstResult((start - 1) * count);
             query.setMaxResults(count);
@@ -170,7 +170,7 @@ public class CollegelistDaoImpl implements EntityDao<CollegelistEntity> {
         Transaction transaction = session.beginTransaction();
         List<CollegelistEntity> list = null;
         try{
-            Query query = session.createQuery("select collegelist.name,collegelist.collegeline from CollegelistEntity collegelist where collegelist.province=? order by collegelist.id asc ");
+            Query query = session.createQuery("select collegelist.id, collegelist.name,collegelist.badge,collegelist.type,collegelist.collegesite,collegelist.collegeline from CollegelistEntity collegelist where collegelist.province=? order by collegelist.id asc ");
             query.setParameter(0,province);
             query.setFirstResult((start - 1) * count);
             query.setMaxResults(count);

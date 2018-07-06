@@ -27,10 +27,10 @@
                 <value>classpath:AdmininfoEntity.hbm.xml</value>
                 <value>classpath:AdvlistEntity.hbm.xml</value>
                 <value>classpath:ProvincelistEntity.hbm.xml</value>
-                <value>classpath:SimulationEntity.hbm.xml</value>
                 <value>classpath:CollegelistEntity.hbm.xml</value>
-                <value>classpath:CeEinfoEntity.hbm.xml</value>
                 <value>classpath:CategoriesEntity.hbm.xml</value>
+                <value>classpath:SimulationEntity.hbm.xml</value>
+                <value>classpath:CeEinfoEntity.hbm.xml</value>
             </list>
         </property>
         <property name="annotatedClasses">
@@ -40,8 +40,8 @@
                 <value>cn.jxufe.entities.CollegelistEntity</value>
                 <value>cn.jxufe.entities.ProvincelistEntity</value>
                 <value>cn.jxufe.entities.SimulationEntity</value>
-                <value>cn.jxufe.entities.CeEinfoEntity</value>
                 <value>cn.jxufe.entities.CategoriesEntity</value>
+                <value>cn.jxufe.entities.CeEinfoEntity</value>
             </list>
         </property>
     </bean>
@@ -56,6 +56,12 @@
     <bean id="admininfoDao" class="cn.jxufe.dao.AdmininfoDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="simulationDao" class="cn.jxufe.dao.SimulationDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="ceeinfoDao" class="cn.jxufe.dao.CeEinfoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
 
     <!-- hibernate加入Service层 -->
     <bean id="collegelistService" class="cn.jxufe.service.CollegelistServiceImpl">
@@ -64,13 +70,24 @@
     <bean id="provincelistService" class="cn.jxufe.service.ProvincelistServiceImpl">
         <property name="provincelistDao" ref="provincelistDao" />
     </bean>
+    <bean id="simulationService" class="cn.jxufe.service.SimulationServiceImpl">
+        <property name="simulationDao" ref="simulationDao" />
+    </bean>
+    <bean id="ceeinfoService" class="cn.jxufe.service.CeEinfoServiceImpl">
+        <property name="collegelistDao" ref="ceeinfoDao" />
+    </bean>
 
     <!-- struts2加入Action -->
     <bean id="collegelistAction" class="cn.jxufe.action.CollegelistAction">
         <property name="collegelistService" ref="collegelistService" />
     </bean>
-
     <bean id="provincelistAction" class="cn.jxufe.action.ProvincelistAction">
         <property name="provincelistService" ref="provincelistService" />
+    </bean>
+    <bean id="simulationAction" class="cn.jxufe.action.SimulationAction">
+        <property name="simulationService" ref="simulationService" />
+    </bean>
+    <bean id="ceeinfoAction" class="cn.jxufe.action.CeEinfoAction">
+        <property name="ceEinfoService" ref="ceeinfoService" />
     </bean>
 </beans>

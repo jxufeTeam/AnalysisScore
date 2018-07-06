@@ -1,7 +1,7 @@
 package cn.jxufe.entities;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
@@ -12,9 +12,10 @@ public class CeEinfoEntity {
     private String author;
     private String content;
     private String category;
+    private String province;
     private int state;
-    private Timestamp createtime;
-    private Timestamp updatetime;
+    private Date createtime;
+    private Date updatetime;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -57,13 +58,23 @@ public class CeEinfoEntity {
     }
 
     @Basic
-    @Column(name = "category", nullable = true, length = 255)
+    @Column(name = "category", nullable = false, length = 255)
     public String getCategory() {
         return category;
     }
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Basic
+    @Column(name = "province", nullable = false, length = 255)
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     @Basic
@@ -78,21 +89,21 @@ public class CeEinfoEntity {
 
     @Basic
     @Column(name = "createtime", nullable = false)
-    public Timestamp getCreatetime() {
+    public Date getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Timestamp createtime) {
+    public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
 
     @Basic
     @Column(name = "updatetime", nullable = false)
-    public Timestamp getUpdatetime() {
+    public Date getUpdatetime() {
         return updatetime;
     }
 
-    public void setUpdatetime(Timestamp updatetime) {
+    public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
     }
 
@@ -107,6 +118,7 @@ public class CeEinfoEntity {
                 Objects.equals(author, that.author) &&
                 Objects.equals(content, that.content) &&
                 Objects.equals(category, that.category) &&
+                Objects.equals(province, that.province) &&
                 Objects.equals(createtime, that.createtime) &&
                 Objects.equals(updatetime, that.updatetime);
     }
@@ -114,6 +126,6 @@ public class CeEinfoEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, title, author, content, category, state, createtime, updatetime);
+        return Objects.hash(id, title, author, content, category, province, state, createtime, updatetime);
     }
 }

@@ -1,0 +1,47 @@
+.detailContent {
+    margin: 100px auto;
+    padding: 20px;
+    width: 750px;
+    color: #000;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 1px 1px;
+    -moz-box-shadow: 1px 1px 1px;
+    box-shadow: 1px 1px 1px;
+    overflow-y: hidden !important;
+}
+
+.detailContent header {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.detailContent .bContent {
+    line-height: 2.5;
+    color: #333;
+}
+
+.detailContent footer {
+    height: 50px;
+    line-height: 50px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.detailContent footer a {
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav .right-nav {
+    cursor: pointer;
+    float: right;
+    max-width: 50%;
+}
+
+.backtop {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    font-size:40px;
+}

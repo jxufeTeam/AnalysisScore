@@ -23,11 +23,11 @@ import java.util.Map;
 public class CollegelistRun {
 //    static final Log logger = LogFactory.getLog(CollegelistRun.class);
     public static void main(String[] args) throws Exception {
-        int university = 491;
+        int university = 561;
         int province = 1;
         int classical = 1;
 
-        while(university <= 500){
+        while(university <= 570){
             CollegelistEntity collegelist;
             List<Map> list = new ArrayList<>();
             List<Map> majorlist = new ArrayList<>();

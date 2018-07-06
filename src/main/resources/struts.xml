@@ -28,12 +28,48 @@
                 <param name="root">collegelist</param>
             </result>
         </action>
+        <action name="getDetail" class="collegelistAction" method="getCollegeDetail">
+            <result name="success" type="json">
+                <param name="root">collegelist</param>
+            </result>
+        </action>
     </package>
 
     <package name="provincelist" namespace="/provincelist" extends="json-default">
-        <action name="getProvince" class="provincelistAction" method="getProvince">
+        <action name="getProvince" class="provincelistAction" method="getAllProvince">
             <result name="success" type="json">
                 <param name="root">provincelist</param>
+            </result>
+        </action>
+        <action name="getProvinceline" class="provincelistAction" method="getOnceProvinceLine">
+            <result name="success" type="json">
+                <param name="root">provincelist</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="simulation" namespace="/simulation" extends="json-default">
+        <action name="getMainList" class="simulationAction" method="getMainList">
+            <result name="success" type="json">
+                <param name="root">simulationList</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="ceeinfo" namespace="/ceeinfo" extends="json-default">
+        <action name="getMainList" class="ceeinfoAction" method="getMainList">
+            <result name="success" type="json">
+                <param name="root">ceeinfoList</param>
+            </result>
+        </action>
+        <action name="getOnce" class="ceeinfoAction" method="getOnce">
+            <result name="success" type="json">
+                <param name="root">ceeinfoMap</param>
+            </result>
+        </action>
+        <action name="getList" class="ceeinfoAction" method="getListByProvince">
+            <result name="success" type="json">
+                <param name="root">ceeinfoList</param>
             </result>
         </action>
     </package>

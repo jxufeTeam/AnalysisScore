@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>高考首页</title>
+    <link href="http://www.gaokao.com/favicon.ico" rel="shortcut icon">
     <link href="css/mainPageStyle.css" rel="stylesheet">
     <link href="css/mainHeaderStyle.css" rel="stylesheet">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
@@ -24,9 +25,9 @@
         <div class="main-menu-wrap">
             <ul class="main-menu">
                 <li><a>高考首页</a></li>
-                <li><a>高考资讯</a></li>
+                <li><a href="ceeinfo.jsp">高考资讯</a></li>
                 <li><a href="collegeList.jsp">院校列表</a></li>
-                <li><a>高考试题</a></li>
+                <li><a href="simulationList.jsp">高考试题</a></li>
                 <li><a>高考报考</a></li>
                 <li><a href="forecast.jsp">分数线</a></li>
             </ul>
@@ -42,13 +43,20 @@
 </div>
 <div class="layui-container layui-row" style="margin-top: 40px;">
     <div class="main-content-center layui-col-md8">
-        <div class="layui-carousel" id="main-broadcast">
+        <div class="layui-carousel" id="main-broadcast" lay-filter="test1">
             <div carousel-item>
-                <div>条目1</div>
-                <div>条目2</div>
-                <div>条目3</div>
-                <div>条目4</div>
-                <div>条目5</div>
+                <div style="background: url('img/1.jpg') center">
+                    <span style="position: absolute;top: 50px;left: 100px;font-size: 20px; font-weight: bold; color: #fff;">江财欢迎你</span>
+                </div>
+                <div style="background: url('img/2.png') center">
+                    <span style="position: absolute;top: 50px;left: 100px;font-size: 20px; font-weight: bold; color: #fff;">欧阳康为校党委中心组授课</span>
+                </div>
+                <div style="background: url('img/3.jpg') center">
+                    <span style="position: absolute;top: 50px;left: 100px;font-size: 20px; font-weight: bold; color: #fff;">国际夏令营顺利开营</span>
+                </div>
+                <div style="background: url('img/4.jpg') center">
+                    <span style="position: absolute;top: 50px;left: 100px;font-size: 20px; font-weight: bold; color: #000;">最美时光在江财</span>
+                </div>
             </div>
         </div>
         <div class="main-overview-wrap">
@@ -58,26 +66,6 @@
                     <a>更多<i class="layui-icon layui-icon-right"></i></a>
                 </div>
                 <ul class="main-overview-content">
-                    <li>
-                        <a>湖北：异地高考考生6年增34倍</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南高考录取：集中录取7个批次持续34天</a>
-                        <span>2018-06-01</span>
-                    </li>
                 </ul>
             </div>
             <div class="main-overview">
@@ -86,26 +74,6 @@
                     <a>更多<i class="layui-icon layui-icon-right"></i></a>
                 </div>
                 <ul class="main-overview-content">
-                    <li>
-                        <a>湖北：异地高考考生6年增34倍</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南高考录取：集中录取7个批次持续34天</a>
-                        <span>2018-06-01</span>
-                    </li>
                 </ul>
             </div>
             <div class="main-overview">
@@ -114,26 +82,6 @@
                     <a>更多<i class="layui-icon layui-icon-right"></i></a>
                 </div>
                 <ul class="main-overview-content">
-                    <li>
-                        <a>湖北：异地高考考生6年增34倍</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南高考录取：集中录取7个批次持续34天</a>
-                        <span>2018-06-01</span>
-                    </li>
                 </ul>
             </div>
             <div class="main-overview">
@@ -142,58 +90,80 @@
                     <a>更多<i class="layui-icon layui-icon-right"></i></a>
                 </div>
                 <ul class="main-overview-content">
-                    <li>
-                        <a>湖北：异地高考考生6年增34倍</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>山东下发通知：违规参加高考替考者将入刑定罪</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>北京高招办：高考开考15分钟后不得进考点考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南省招办：高考生身份验证未通过可先入场考试</a>
-                        <span>2018-06-01</span>
-                    </li>
-                    <li>
-                        <a>河南高考录取：集中录取7个批次持续34天</a>
-                        <span>2018-06-01</span>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="main-content-right layui-col-md4">
         <div class="count-down">
-            <span>距离2018年全国高考还有</span>
-            <span>04</span>
+            <span>距离2018年全国高考已经过去</span>
+            <span></span>
             <span>天</span>
         </div>
         <script>
-            $('.count-down span').eq(1).html((6 - (new Date().getDate())) < 10 ? ('0' + (6 - (new Date().getDate()))) : 6 - (new Date().getDate()));
+            // $('.count-down span').eq(1).html((6 - (new Date().getDate())) < 10 ? ('0' + (6 - (new Date().getDate()))) : 6 - (new Date().getDate()));
+
+            $('.count-down span').eq(1).html(Math.abs((6 - (new Date().getDate()))) < 10 ? ('0' + Math.abs((6 - (new Date().getDate())))) : Math.abs((6 - (new Date().getDate()))));
         </script>
         <div class="layui-inline" id="main-date" style="left: 12.5%; margin-bottom: 20px"></div>
         <div class="main-simulation">
             <div class="main-simulation-header">精品试题推荐</div>
             <ul class="main-simulation-content">
-                <li><span class="layui-badge layui-bg-blue">1</span><a>海南省海口市高二英语期末调研测试题</a></li>
-                <li><span class="layui-badge layui-bg-blue">2</span><a>甘肃省白银阳光高级中学高二英语期末考试</a></li>
-                <li><span class="layui-badge layui-bg-blue">3</span><a>重庆市万州区高二物理期末质量监测</a></li>
-                <li><span class="layui-badge layui-bg-blue">4</span><a>云南省昆明市第十二中学高二物理期末考试</a></li>
-                <li><span class="layui-badge layui-bg-blue">5</span><a>河北省承德市联校高二物理期末考试</a></li>
-                <li><span class="layui-badge layui-bg-blue">6</span><a>天津市耀华中学高二（上）化学期末试卷</a></li>
-                <li><span class="layui-badge layui-bg-blue">7</span><a>四川省广安市高二上化学期末试卷</a></li>
-                <li><span class="layui-badge layui-bg-blue">8</span><a>河北省承德市联校高二上地理期末考试</a></li>
-                <li><span class="layui-badge layui-bg-blue">9</span><a>湖南省汉寿县普通高中地理期末测试题</a></li>
-                <li><span class="layui-badge layui-bg-blue">10</span><a>广东省揭阳市产业园区高二历史期末考试</a></li>
             </ul>
         </div>
     </div>
 </div>
 <script>
+    function freshSimulation(data){
+        request({},'POST','/simulation/getMainList',refreshSimulation)
+    }
+    
+    function refreshSimulation(data) {
+        var value = JSON.parse(data);
+        $.each(value, function (index) {
+            var li = $('<li></li>');
+            var span = $('<span class="layui-badge layui-bg-blue">' + (index + 1) + '</span>');
+            var a = $('<a href="' + value[index].link + '">' + value[index].name + '</a>');
+            li.append(span);
+            li.append(a);
+            $('.main-simulation-content').append(li);
+        })
+    }
+
+    function freshCeEinfo(data){
+        request({},'POST','/ceeinfo/getMainList?start=1&count=5&category=高考新闻',refreshCeEinfo)
+    }
+
+    function refreshCeEinfo(data){
+        var value = JSON.parse(data);
+        $.each(value, function(index){
+            var li = $('<li></li>');
+            var a = $('<a href="detail.jsp?' + value[index].id +'">' + value[index].title +'</a>');
+            var span = $('<span>' + value[index].time + '</span>');
+            li.append(a);
+            li.append(span);
+            $('.main-overview-content').append(li);
+        });
+    }
+
+    freshSimulation();
+    freshCeEinfo();
+
+    function request(object, method, methodURL, successFunction) {
+        $.ajax({
+            url: methodURL,
+            type: method,
+            data: JSON.stringify(object),
+            contentType: "application/json",
+            dataType: "json",
+            async: false,
+            success: successFunction,
+            error: function (data) {
+                console.log('error!');
+            }
+        });
+    }
+
     layui.use(['carousel','laydate'], function(){
         var carousel = layui.carousel;
         var laydate = layui.laydate;
@@ -201,6 +171,12 @@
         carousel.render({
             elem: '#main-broadcast'
             ,width: '100%' //设置容器宽度
+        });
+        //监听轮播切换事件
+        carousel.on('change(test1)', function(obj){ //test1来源于对应HTML容器的 lay-filter="test1" 属性值
+            console.log(obj.index); //当前条目的索引
+            console.log(obj.prevIndex); //上一个条目的索引
+            console.log(obj.item); //当前条目的元素对象
         });
         laydate.render({
             elem: '#main-date'

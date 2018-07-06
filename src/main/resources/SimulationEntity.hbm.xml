@@ -8,14 +8,23 @@
         <id name="id">
             <column name="id" sql-type="int(11)"/>
         </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(255)"/>
+        </property>
         <property name="category">
-            <column name="category" sql-type="int(11)"/>
+            <column name="category" sql-type="varchar(255)"/>
         </property>
         <property name="province">
             <column name="province" sql-type="varchar(255)"/>
         </property>
         <property name="link">
             <column name="link" sql-type="varchar(255)"/>
+        </property>
+        <property name="year">
+            <column name="year" sql-type="int(11)"/>
+        </property>
+        <property name="subject">
+            <column name="subject" sql-type="varchar(255)"/>
         </property>
     </class>
 </hibernate-mapping>

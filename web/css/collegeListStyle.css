@@ -68,7 +68,7 @@
 }
 
 .college-info-list{
-    width: 580px;
+    width: 780px;
     height: 110px;
     border: 1px solid #E1E1E1;
     border-top: none;
@@ -93,27 +93,32 @@
 }
 
 .college-info-list-center{
-    width: 420px;
+    width: 679px;
     height: 90px;
     padding: 10px;
     float: left;
 }
 
-.college-info-list-center ul{
-    width: 460px;
+.college-info-list-center ul:not(.layui-rate){
+    width: 679px;
     height: 90px;
     list-style: none;
 }
 
-.college-info-list-center ul li{
-    width: 220px;
+.college-info-list-center ul li:not(.layui-inline){
+    width: 320px;
     height: 20px;
     padding: 5px;
     float: left;
 }
 
+.layui-rate{
+    padding: 0;
+    font-size: 14px;
+}
+
 .college-info-list-notfound{
-    width: 580px;
+    width: 718px;
     border: 1px solid #E1E1E1;
     padding: 20px 30px 75px;
 }

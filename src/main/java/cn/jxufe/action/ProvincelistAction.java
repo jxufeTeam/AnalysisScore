@@ -14,6 +14,10 @@ public class ProvincelistAction extends ActionSupport {
 
     private String provincelist;
 
+    private String provinceLine;
+
+    private String province;
+
     @Autowired
     private ProvincelistServiceImpl provincelistService;
 
@@ -25,13 +29,30 @@ public class ProvincelistAction extends ActionSupport {
         this.provincelist = provincelist;
     }
 
+    public void setProvinceLine(String provinceLine) {
+        this.provinceLine = provinceLine;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
     public void setProvincelistService(ProvincelistServiceImpl provincelistService) {
         this.provincelistService = provincelistService;
     }
 
-    public String getProvince(){
+    public String getAllProvince(){
         List<ProvincelistEntity> province = provincelistService.selectAll();
         JSONArray jsonArray = JSONArray.fromObject(province);
+        provincelist = jsonArray.toString();
+        return SUCCESS;
+    }
+
+    public String getOnceProvinceLine(){
+        ProvincelistEntity provincelistEntity = new ProvincelistEntity();
+        provincelistEntity.setName(province);
+        provincelistEntity = provincelistService.selectOnce(provincelistEntity);
+        JSONArray jsonArray = JSONArray.fromObject(provincelistEntity);
         provincelist = jsonArray.toString();
         return SUCCESS;
     }

@@ -38,6 +38,8 @@ public class CollegelistAction extends ActionSupport {
 
     private String batch;
 
+    private int id;
+
     @Autowired
     private CollegelistServiceImpl collegelistService;
 
@@ -121,9 +123,18 @@ public class CollegelistAction extends ActionSupport {
         this.batch = batch;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setCollegelistService(CollegelistServiceImpl collegelistService) {
         this.collegelistService = collegelistService;
     }
+
 
     public String getCollege(){
         List<CollegelistEntity> colleges;
@@ -150,6 +161,7 @@ public class CollegelistAction extends ActionSupport {
             map.put("doctor", temp[5]+"");
             map.put("province", temp[6]+"");
             map.put("collegesite", temp[7]+"");
+            map.put("id", temp[8] + "");
             list.add(map);
         }
         JsonConfig jsonConfig = new JsonConfig();
@@ -173,40 +185,141 @@ public class CollegelistAction extends ActionSupport {
         return SUCCESS;
     }
 
+//    public String getForecastResult(){
+//        List<CollegelistEntity> colleges = collegelistService.selectPart(start, end, score, province);
+//        List<Map<String, String>> list = new ArrayList<>();
+//        for(Object college : colleges){
+//            Map<String, String> map = new HashMap<>();
+//            Object[] temp = (Object[]) college;
+//            JSONArray myJsonArray = JSONArray.fromObject(temp[2]);
+//            JSONArray result = new JSONArray();
+//            boolean first = false;
+//            int years = 0;
+//            int end = 0;
+//            for(Object o : myJsonArray){
+//                JSONObject objects = (JSONObject) o;
+//                if(studentProvince.equals(objects.getString("province")) && category.equals(objects.getString("classical")) && batch.equals(objects.getString("batch"))){
+//                    first = true;
+//                    if(score >= Double.parseDouble(objects.getString("averageScore"))){
+//                        result.add(objects);
+//                        years++;
+//                    }
+//                    end++;
+//                }else if(!studentProvince.equals(objects.getString("province")) && first){
+//                    break;
+//                }
+//            }
+//            if(years >= (end / 2) && years > 0){
+//                map.put("name", temp[0]+"");
+//                map.put("badge", temp[1]+"");
+//                map.put("line",result.toString());
+//                list.add(map);
+//            }
+//        }
+//        JsonConfig jsonConfig = new JsonConfig();
+//        jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
+//        JSONArray jsonArray = JSONArray.fromObject(list, jsonConfig);
+//        collegelist = jsonArray.toString();
+//        return SUCCESS;
+//    }
+
     public String getForecastResult(){
+        System.out.println("start: " + start + ",end: " + end + ",province: " + province);
         List<CollegelistEntity> colleges = collegelistService.selectPart(start, end, score, province);
         List<Map<String, String>> list = new ArrayList<>();
         for(Object college : colleges){
-            Map<String, String> map = new HashMap<>();
             Object[] temp = (Object[]) college;
-            JSONArray myJsonArray = JSONArray.fromObject(temp[1]);
-            JSONArray result = new JSONArray();
+            JSONArray myJsonArray = JSONArray.fromObject(temp[5]);
+            List<Map<String, String>> linelist = new ArrayList<>();
             boolean first = false;
-            int years = 0;
-            int end = 0;
             for(Object o : myJsonArray){
                 JSONObject objects = (JSONObject) o;
                 if(studentProvince.equals(objects.getString("province")) && category.equals(objects.getString("classical")) && batch.equals(objects.getString("batch"))){
                     first = true;
-                    if(score >= Double.parseDouble(objects.getString("averageScore"))){
-                        result.add(objects);
-                        years++;
-                    }
-                    end++;
+                    Map<String, String> map = new HashMap<>();
+                    map.put("score",objects.getString("averageScore"));
+                    map.put("years",objects.getString("year"));
+                    linelist.add(map);
                 }else if(!studentProvince.equals(objects.getString("province")) && first){
                     break;
                 }
             }
-            if(years >= (end / 2) && years > 0){
-                map.put("name", temp[0]+"");
-                map.put("line",result.toString());
-                list.add(map);
+            Map<String, String> map = regression(linelist);
+//            Map<String, String> map = new HashMap<>();
+            try{
+                if(Double.parseDouble(map.get("score")) < score){
+                    map.put("name", temp[1]+"");
+                    map.put("badge", temp[2]+"");
+                    map.put("province",studentProvince);
+                    map.put("type", temp[3]+"");
+                    map.put("collegesite", temp[4]+"");
+                    map.put("id", temp[0] + "");
+                    list.add(map);
+                }
+            }catch (Exception ex){
+                ex.printStackTrace();
             }
+
         }
         JsonConfig jsonConfig = new JsonConfig();
         jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
         JSONArray jsonArray = JSONArray.fromObject(list, jsonConfig);
         collegelist = jsonArray.toString();
         return SUCCESS;
+    }
+
+    public String getCollegeDetail(){
+        CollegelistEntity entity = new CollegelistEntity();
+        entity.setId(id);
+        entity = collegelistService.selectOnce(entity);
+        JsonConfig jsonConfig = new JsonConfig();
+        jsonConfig.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT);
+        JSONArray jsonArray = JSONArray.fromObject(entity, jsonConfig);
+        collegelist = jsonArray.toString();
+        return SUCCESS;
+    }
+
+    private Map<String, String> regression(List<Map<String, String>> line){
+        int x = 0;
+        int y = 0;
+        double count = 0;
+        for(Map<String, String> map : line){
+            if(Integer.parseInt(map.get("score")) != 0){
+                x += Integer.parseInt(map.get("years"));
+                y += Integer.parseInt(map.get("score"));
+                count++;
+            }
+        }
+        double xAve = x / count;
+        double yAve = y / count;
+        double varX = 0;
+        double covXY = 0;
+        double SStot = 0;
+        double SSres = 0;
+        for(Map<String, String> map : line){
+            if(Integer.parseInt(map.get("score")) != 0) {
+                varX += Math.pow((Integer.parseInt(map.get("years")) - xAve), 2);
+                covXY += ((Integer.parseInt(map.get("years")) - xAve) * (Integer.parseInt(map.get("score")) - yAve));
+                SStot += (Math.pow((Integer.parseInt(map.get("score")) - yAve), 2));
+            }
+        }
+        double b = covXY / varX;
+        double a = yAve - b * xAve;
+        for(Map<String, String> map : line){
+            if(Integer.parseInt(map.get("score")) != 0) {
+                SSres += (Math.pow((Integer.parseInt(map.get("score")) - (a + b * Integer.parseInt(map.get("years")))), 2));
+            }
+        }
+        double R2 = 1 - SSres/SStot;
+        System.out.println("Y = " + a + " + " + b + " * X");
+        System.out.println("2018年的分数为：" + (a + b * 2018));
+        System.out.println("概率为：" + R2 + "\n");
+        Map<String, String> coefficient = new HashMap<>();
+        coefficient.put("rate",Math.rint((R2 / 2) * 10) + "");
+        coefficient.put("score",Math.ceil(a + b * 2018) + "");
+//        coefficient.put("a",a);
+//        coefficient.put("b",b);
+
+        return coefficient;
     }
 }

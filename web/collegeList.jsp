@@ -8,11 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>院校列表</title>
+    <link href="http://www.gaokao.com/favicon.ico" rel="shortcut icon">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <link href="lib/layui/css/layui.css" rel="stylesheet">
+    <link href="css/mainPageStyle.css" rel="stylesheet">
     <script src="lib/layui/layui.js"></script>
-    <link href="css/collegeListStyle.css?version=2018.6.03" rel="stylesheet">
+    <link href="css/collegeListStyle.css?version=2018.6.14" rel="stylesheet">
     <link href="css/mainHeaderStyle.css" rel="stylesheet">
 </head>
 <body>
@@ -24,9 +26,9 @@
         <div class="main-menu-wrap">
             <ul class="main-menu">
                 <li><a href="index.jsp">高考首页</a></li>
-                <li><a>高考资讯</a></li>
+                <li><a href="ceeinfo.jsp">高考资讯</a></li>
                 <li><a>院校列表</a></li>
-                <li><a>高考试题</a></li>
+                <li><a href="simulationList.jsp">高考试题</a></li>
                 <li><a>高考报考</a></li>
                 <li><a href="forecast.jsp">分数线</a></li>
             </ul>
@@ -93,7 +95,26 @@
             </div>
         </div>
     </div>
-    <div class="college-info-list-wrap"></div>
+    <div class="college-info-list-wrap">
+        <div class="main-content-right" style="width: 380px;position: absolute;right: 0;">
+            <div class="count-down">
+                <span>距离2018年全国高考已经过去</span>
+                <span></span>
+                <span>天</span>
+            </div>
+            <script>
+                // $('.count-down span').eq(1).html((6 - (new Date().getDate())) < 10 ? ('0' + (6 - (new Date().getDate()))) : 6 - (new Date().getDate()));
+
+                $('.count-down span').eq(1).html(Math.abs((6 - (new Date().getDate()))) < 10 ? ('0' + Math.abs((6 - (new Date().getDate())))) : Math.abs((6 - (new Date().getDate()))));
+            </script>
+            <div class="layui-inline" id="main-date" style="left: 12.5%; margin-bottom: 20px"></div>
+            <div class="main-simulation">
+                <div class="main-simulation-header">精品试题推荐</div>
+                <ul class="main-simulation-content">
+                </ul>
+            </div>
+        </div>
+    </div>
     <div id="college-info-list-laypage"></div>
 </div>
 </body>
@@ -120,7 +141,7 @@
         if(value.length > 0){
             $.each(value, function (index) {
                 var wrapDiv = $('<div class="college-info-list"></div>');
-                var nodeDiv1 = $('<div class="college-info-list-left"><a href=""><img src="' + value[index].badge + '" /></a><strong><a href="">' + value[index].name + '</a></strong></div>');
+                var nodeDiv1 = $('<div class="college-info-list-left"><a href="collegeDetail.jsp?' + value[index].id +'"><img src="' + value[index].badge + '" /></a><strong><a href="">' + value[index].name + '</a></strong></div>');
                 var nodeDiv2 = $('<div class="college-info-list-center"></div>');
                 var nodeUl = $('<ul><li>高校所在地：' + value[index].province + '</li><li>院校特色：' + value[index].type + '</li><li>博士点：' + value[index].doctor + '个</li><li>高校隶属：' + value[index].belong + '</li><li>硕士点：' + value[index].master + '个</li><li>学校网址：<a target="_blank" href="' + value[index].collegesite + '">' + value[index].collegesite + '</a></li></ul>');
                 nodeDiv2.append(nodeUl);
@@ -138,8 +159,17 @@
 
     }
 
-    function feshLayuipage(condition, province) {
-        layui.use('laypage', function () {
+    function freshLayuipage(condition, province) {
+        layui.use(['laypage','laydate'], function () {
+            var laydate = layui.laydate;
+            //建造实例
+            laydate.render({
+                elem: '#main-date'
+                ,position: 'static'
+                ,mark: {
+                    '2018-6-6': '高考'
+                }
+            });
             var laypage = layui.laypage;
             // var province = encodeURIComponent($('.select').text());
             var count;
@@ -170,13 +200,15 @@
     }
 
     function freshCollegelist(data, condition, province) {
-        $('.college-info-list-wrap').html('');
-        request({}, 'POST', '/collegelist/getCollege?start=' + data + '&end=5&condition=' + condition + '&province=' + province, refreshCollegelist);
+        // $('.college-info-list-wrap').html('');
+        $('.college-info-list-notfound').remove();
+        $('.college-info-list').remove();
+        request({}, 'POST', '/collegelist/getCollege?start=' + data + '&end=7&condition=' + condition + '&province=' + province, refreshCollegelist);
     }
 
     freshProvince();
 
-    feshLayuipage('','全部');
+    freshLayuipage('','全部');
 
     $('#college-province a').on('click', function () {
         $('.college-info-list-sreach-right input').eq(0).val('');
@@ -184,7 +216,7 @@
         $(this).addClass('select');
         console.log($('#student-score').css('display'));
         if($('#student-score').css('display') != 'block'){
-            feshLayuipage('',$(this).text().trim());
+            freshLayuipage('',$(this).text().trim());
         };
     });
 
@@ -192,7 +224,7 @@
         var condition = $('.college-info-list-sreach-right input').eq(0).val();
         $('#college-province a').removeClass('select');
         $('#college-province a').eq(0).addClass('select');
-        feshLayuipage(condition, '全部');
+        freshLayuipage(condition, '全部');
     });
 
     $('.college-info-list-sreach-left').on('click', function(){
@@ -207,23 +239,96 @@
         }
     });
 
-    function feshforecast(score, province, studentProvince, category, batch) {
-        layui.use('laypage', function () {
+    function freshforecast(score, province, studentProvince, category, batch) {
+        layui.use(['laypage','laydate'], function () {
+            // var rate = layui.rate;
+
+            // var laydate = layui.laydate;
+            // //建造实例
+            // laydate.render({
+            //     elem: '#main-date'
+            //     ,position: 'static'
+            //     ,mark: {
+            //         '2018-6-6': '高考'
+            //     }
+            // });
             var laypage = layui.laypage;
             // var province = encodeURIComponent($('.select').text());
             var count;
-            function feshforecastlist(data, score, province, studentProvince, category, batch) {
-                $('.college-info-list-wrap').html('');
-                count = request({}, 'POST', '/collegelist/forecast?start=' + data + '&score='+ score + '&province=' + province + '&studentProvince=' + studentProvince + '&category=' + category + '&batch=' + batch, refreshforecastlist)
+            function freshforecastlist(data, score, province, studentProvince, category, batch) {
+                // $('.college-info-list-wrap').html('');
+                $('.college-info-list-notfound').remove();
+                $('.college-info-list').remove();
+                request({}, 'POST', '/collegelist/forecast?start=' + data + '&end=7&score='+ score + '&province=' + province + '&studentProvince=' + studentProvince + '&category=' + category + '&batch=' + batch, refreshforecastlist)
             }
 
             function refreshforecastlist(data){
                 var value = JSON.parse(data);
-                console.log(value);
-                console.log(value.length);
-                return value.length;
+                if(value.length > 0){
+                    $.each(value, function (index) {
+                        var rateID = 'rate' + (index  + 1);
+                        var wrapDiv = $('<div class="college-info-list"></div>');
+                        var nodeDiv1 = $('<div class="college-info-list-left"><a href="collegeDetail.jsp?' + value[index].id +'"><img src="' + value[index].badge + '" /></a><strong><a href="">' + value[index].name + '</a></strong></div>');
+                        var nodeDiv2 = $('<div class="college-info-list-center"></div>');
+                        var nodeUl = $('<ul><li>高校所在地：' + value[index].province + '</li><li>院校特色：' + value[index].type + '</li><li>预测2018年分数：' + value[index].score + '分</li><li>预测批次：' + batch + '</li><li>推荐指数：<div id="' + rateID + '"></div></li><li>学校网址：<a target="_blank" href="' + value[index].collegesite + '">' + value[index].collegesite + '</a></li></ul>');
+                        layui.use(['rate'], function(){
+                            var rate = layui.rate;
+                            rate.render({
+                                elem: '#' + rateID
+                                ,value: value[index].rate
+                                ,readonly: true
+                            });
+                        });
+                        nodeDiv2.append(nodeUl);
+                        wrapDiv.append(nodeDiv1);
+                        wrapDiv.append(nodeDiv2);
+                        $('.college-info-list-wrap').append(wrapDiv);
+                        if (index == 0) {
+                            $('.college-info-list').css('border-top', '1px solid #E1E1E1');
+                        }
+                    });
+                }else{
+                    var div = $('<div class="college-info-list-notfound"><h3>抱歉，没有找到相关内容</h3><p><span>您可以：</span><span>1.修改搜索“关键词”，再试一次。</span><span>2.减少部分搜索条件，便于搜索到更多内容。</span></p></div>');
+                    $('.college-info-list-wrap').append(div);
+                }
+                // if(value.length > 0){
+                //
+                //     $.each(value, function (index) {
+                //         var wrapDiv = $('<div class="college-info-list"></div>');
+                //         var nodeDiv1 = $('<div class="college-info-list-left"><a href=""><img src="' + value[index].badge + '" /></a><strong><a href="">' + value[index].name + '</a></strong></div>');
+                //         var linelist = JSON.parse(value[index].line);
+                //         console.log(linelist);
+                //         var nodeTable = $('<table class="layui-table" lay-size="sm"></table>');
+                //         // var colgroup = $('<colgroup></colgroup>');
+                //         var thead = $('<tr></tr>');
+                //         var tbody = $('<tr></tr>');
+                //         $.each(linelist, function(index){
+                //             var theadTh = $('<th>' + linelist[index].year + '</th>');
+                //             var tbodyTh = $('<th>' + linelist[index].averageScore +'</th>');
+                //             thead.append(theadTh);
+                //             tbody.append(tbodyTh);
+                //         });
+                //         nodeTable.append(thead).append(tbody);
+                //         var nodeDiv2 = $('<div class="college-info-list-center"></div>');
+                //         // var nodeUl = $('<ul><li>高校所在地：' + value[index].province + '</li><li>院校特色：' + value[index].type + '</li><li>博士点：' + value[index].doctor + '个</li><li>高校隶属：' + value[index].belong + '</li><li>硕士点：' + value[index].master + '个</li><li>学校网址：<a target="_blank" href="' + value[index].collegesite + '">' + value[index].collegesite + '</a></li></ul>');
+                //         // nodeDiv2.append(nodeUl);
+                //         nodeDiv2.append(nodeTable);
+                //         wrapDiv.append(nodeDiv1);
+                //         wrapDiv.append(nodeDiv2);
+                //         $('.college-info-list-wrap').append(wrapDiv);
+                //         if (index == 0) {
+                //             $('.college-info-list').css('border-top', '1px solid #E1E1E1');
+                //         }
+                //     });
+                // }else{
+                //     var div = $('<div class="college-info-list-notfound"><h3>抱歉，没有找到相关内容</h3><p><span>您可以：</span><span>1.修改搜索“关键词”，再试一次。</span><span>2.减少部分搜索条件，便于搜索到更多内容。</span></p></div>');
+                //     $('.college-info-list-wrap').append(div);
+                // }
+                // console.log(value);
+                // console.log(value.length);
+                // count = value.length;
             }
-            feshforecastlist(1, score, province, studentProvince, category, batch);
+            freshforecastlist(1, score, province, studentProvince, category, batch);
             //执行一个laypage实例
             laypage.render({
                 elem: 'college-info-list-laypage' //注意，这里的 test1 是 ID，不用加 # 号
@@ -234,7 +339,7 @@
                 , next: '<em class="layui-icon">&#xe65b;</em>'
                 , jump: function (obj, first) {
                     if(!first){
-                        feshforecastlist(obj.curr, score, province, studentProvince, category, batch)
+                        freshforecastlist(obj.curr, score, province, studentProvince, category, batch)
                     }
                 }
             });
@@ -254,8 +359,24 @@
         var category = $('select[name="category"]').val();
         var batch = $('select[name="batch"]').val();
         console.log(score + "," + province + "," + studentProvince + "," + category + "," + batch);
-        feshforecast(score,province,studentProvince,category,batch);
+        freshforecast(score,province,studentProvince,category,batch);
     });
+    function freshSimulation(data){
+        request({},'POST','/simulation/getMainList',refreshSimulation)
+    }
+
+    function refreshSimulation(data) {
+        var value = JSON.parse(data);
+        $.each(value, function (index) {
+            var li = $('<li></li>');
+            var span = $('<span class="layui-badge layui-bg-blue">' + (index + 1) + '</span>');
+            var a = $('<a href="' + value[index].link + '">' + value[index].name + '</a>');
+            li.append(span);
+            li.append(a);
+            $('.main-simulation-content').append(li);
+        })
+    }
+    freshSimulation();
 
     function request(object, method, methodURL, successFunction) {
         $.ajax({
